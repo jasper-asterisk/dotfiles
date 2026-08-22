@@ -42,7 +42,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal = "kitty"
-local fileManager = "dolphin" -- or kitty
+local fileManager = "dolphin" -- or yazu
 local menu        = "noctalia msg panel-toggle launcher"
 
 
@@ -72,8 +72,11 @@ end)
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
+--hl.env("QT_QPA_PLATFORMTHEME", "kde")
+--hl.env("QT_QPA_PLATFORM", "wayland")
+--hl.env("XDG_MENU_PREFIX", "plasma-")
 hl.env("XCURSOR_SIZE", "18")
-hl.env("HYPRCURSOR_SIZE", "18")
+hl.env("HYPRCURSOR_SIZE", "24")
 
 
 -----------------------
@@ -102,8 +105,8 @@ hl.env("HYPRCURSOR_SIZE", "18")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = 20,
+        gaps_in  = 3,
+        gaps_out = 3,
 
         border_size = 3,
 
@@ -127,12 +130,12 @@ hl.config({
 
         -- Change transparency of focused and unfocused windows
         active_opacity   = 1.0,
-        inactive_opacity = 1.0,
+        inactive_opacity = 1,
 
         shadow = {
-            enabled      = true,
-            range        = 4,
-            render_power = 3,
+            enabled      = false,
+            range        = 3,
+            render_power = 5,
             color        = 0xee1a1a1a,
         },
 
@@ -140,12 +143,15 @@ hl.config({
             enabled   = true,
             size      = 3,
             passes    = 1,
-            vibrancy  = 0.1696,
+            vibrancy  = 0.1616,
         },
     },
 
     animations = {
         enabled = true,
+    },
+    debug = {
+	damage_blink=false,
     },
 })
 
@@ -157,7 +163,7 @@ hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 
 -- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 200, dampening = 24.21279333 })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
